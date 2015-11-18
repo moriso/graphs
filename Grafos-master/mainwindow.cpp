@@ -4,13 +4,13 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QMessageBox>
-#define DFS 0
-#define BFS 1
-#define ORDENACAO 2
-#define PRIM 3
-#define KRUSKAL 4
-#define DIJKSTRA 5
-#define FF 6
+#define BFS 0
+#define DFS 1
+#define DIJKSTRA 2
+#define KRUSKAL 3
+#define ORDENACAO 4
+#define PRIM 5
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -41,7 +41,6 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 void MainWindow::mostrarLista(QList<Vertex *> lista){
-    qDebug() << "mostrarLista";
     QString str = "";
     this->ui->textEdit->append("Ordem Topologica");
     foreach (Vertex * vertice, lista){

@@ -36,37 +36,32 @@
      <widget class="QComboBox" name="metodos">
       <item>
        <property name="text">
-        <string>DFS</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
         <string>BFS</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>ORDENAÇÃO TOPOLÓGICA</string>
+        <string>DFS</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>PRIM</string>
+        <string>Dijkstra</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>KRUSKAL</string>
+        <string>Kruskal</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>DIJKSTRA</string>
+        <string>Ordenação Topológica</string>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>FORD FUCKERSON</string>
+        <string>Prim</string>
        </property>
       </item>
      </widget>

@@ -20,7 +20,6 @@ void Dijkstra::run () {
 }
 
 void Dijkstra::dijkstra() {
-    qDebug() << "chegou metodoDijkstra";
     Vertex *verticeAtual, *vertice;
     Edge *aresta;
     Vertex **V = grafo->getVertex();
@@ -29,22 +28,18 @@ void Dijkstra::dijkstra() {
         V[i]->setColor(Qt::white);
         V[i]->setFather(NULL);
         V[i]->setD(INF);
-        qDebug() << "dentro do for";
     }
 
     V[index]->setColor(Qt::gray);
     emit update(grafo);
     sleep(1);
-    qDebug() << "Pintou cinza";
     V[index]->setD(0);
-    qDebug() << "Vai inserir Lista";
     lista.append(V[index]);
     while (!lista.empty()) {
         vertice = popMenor();
         vertice->setColor(Qt::black);
         emit update(grafo);
         sleep(1);
-        qDebug() << "Pintou Preto";
         for ( aresta = vertice->getEdges(); aresta; aresta = aresta->getNext() ) {
             verticeAtual = V[aresta->getIdAdj()];
             if ( ( vertice->getD() + aresta->getW()) < ( verticeAtual->getD() ) ) {
@@ -55,7 +50,6 @@ void Dijkstra::dijkstra() {
                 verticeAtual->setColor(Qt::gray);
                 emit update(grafo);
                 sleep(1);
-                qDebug() << "Pintou Cinza";
                 lista.append(verticeAtual);
             }
         }

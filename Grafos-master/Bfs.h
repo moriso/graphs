@@ -10,7 +10,7 @@
 
 #include "Graph.h"
 
-#define INFINITO 1000000
+#define INF  100000
 
 class Bfs : public QThread {
     Q_OBJECT

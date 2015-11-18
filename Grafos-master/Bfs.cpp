@@ -14,7 +14,6 @@ void Bfs::run () {
 }
 
 void Bfs:: metodoBFS() {
-    qDebug() << "Metodo BFS";
     QList<Vertex *> lista;
     Vertex *verticeAtual, *vertice;
     Edge *aresta;
@@ -24,7 +23,7 @@ void Bfs:: metodoBFS() {
     for ( i = 0; i < quantidade; i++ ) {
         ListaVertexs[i]->setFather(NULL);
         ListaVertexs[i]->setColor(Qt::white);
-        ListaVertexs[i]->setD(INFINITO);
+        ListaVertexs[i]->setD(INF);
     }
     ListaVertexs[this->verticeInicial]->setD(0);
     ListaVertexs[this->verticeInicial]->setColor(Qt::gray);
@@ -50,7 +49,6 @@ void Bfs:: metodoBFS() {
         vertice->setColor(Qt::black);
         emit update(grafo);
         sleep(1);
-        qDebug() << "Emitiu sinal";
     }
 }
 

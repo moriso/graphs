@@ -16,7 +16,6 @@ void Graph::paint () {
 
     QPainter painter(main);
 
-    // Pintar primeiramente as arestas
     for (Edge *e=edges; e; e=e->getNext() ) {
         e->paint( getVertexAt(e->getId())->getPoint(),
                  getVertexAt(e->getIdAdj())->getPoint(),
@@ -111,7 +110,6 @@ QString Graph::loadFromFile ( QString fileName ) {
     resize(n);
     while(!in.atEnd() && n) {
         line = in.readLine();
-        //line = 1,100,100 ==> nome vértice, coordenada x, coordenada y
         sl = line.split(",");
         if (sl.count()==3) {
             addVertex ( sl[0], QPoint(sl[1].toInt(), sl[2].toInt()));
@@ -123,8 +121,8 @@ QString Graph::loadFromFile ( QString fileName ) {
         n--;
     }
     while(!in.atEnd() && !line.isEmpty()) {
-        line = in.readLine();   // line = (1,2,5)
-        line = line.mid(1, line.length() -2 );  // line = 1,2,5
+        line = in.readLine();   
+        line = line.mid(1, line.length() -2 ); 
         sl = line.split(",");
         if (sl.count()==3)
             addEdge(sl[0], sl[1], sl[2].toInt() );

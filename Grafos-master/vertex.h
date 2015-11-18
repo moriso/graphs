@@ -8,7 +8,7 @@
 
 #include "edge.h"
 
-#define INFINITY INT_MAX
+#define INF 100000
 
 class Vertex : public QObject {
     Q_OBJECT

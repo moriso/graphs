@@ -1,7 +1,6 @@
 #ifndef DFS_H
 #define DFS_H
 
-#define INFINITO 1000000
 #include <QThread>
 #include <QDebug>
 #include <QString>

@@ -87,20 +87,13 @@ Vertex *Vertex::clone () {
 }
 
 QString Vertex::toString( int v ) {
-    if (v!=INFINITY)
+    if (v!=INF)
         return QString::number(v);
     else
         return "-";
 }
 
 void Vertex::paint ( QPainter &painter ) {
-//    painter.setBrush ( color );
-//    painter.setPen( (color==Qt::white)? Qt::black : Qt::white );
-//    painter.drawEllipse( p.x()-20,  p.y()-20, 40, 40 );
-
-//    QRect rect ( p.x()-4,  p.y()-8, p.x()+4,  p.y()+8 );
-//    painter.drawText( rect, name );
-
     painter.setBrush ( color );
     painter.setPen( (color==Qt::white)? Qt::black : Qt::white );
     painter.drawEllipse( p.x()-20,  p.y()-20, 40, 40 );

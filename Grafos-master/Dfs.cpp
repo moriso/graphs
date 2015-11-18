@@ -18,8 +18,8 @@ void Dfs:: metodoDFS() {
     int quantidade = grafo->getVertexCount();
     for(int i = this->indice; i < quantidade; i++) {
         ListaVertex[i]->setFather(NULL);
-        ListaVertex[i]->setTi(INFINITO);
-        ListaVertex[i]->setTo(INFINITO);
+        ListaVertex[i]->setTi(INF);
+        ListaVertex[i]->setTo(INF);
         ListaVertex[i]->setColor(Qt::white);
     }
     tempo = 0;
@@ -35,7 +35,7 @@ void Dfs::visit(Vertex *vertice) {
     vertice->setColor(Qt::gray);
     emit update(grafo);
     sleep(1);
-    vertice->setTi(tempo++);
+    vertice->setTi(++tempo);
     for(aresta = vertice->getEdges(); aresta; aresta = aresta->getNext()) {
         verticeAtual = grafo->getVertex()[aresta->getIdAdj()];
         if(verticeAtual->getColor() == Qt::white) {
@@ -43,7 +43,7 @@ void Dfs::visit(Vertex *vertice) {
             visit(verticeAtual);
         }
     }
-    vertice->setTo(tempo++);
+    vertice->setTo(++tempo);
     vertice->setColor(Qt::black);
     emit update(grafo);
     sleep(1);

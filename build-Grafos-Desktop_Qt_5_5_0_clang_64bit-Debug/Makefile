@@ -50,7 +50,6 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../Grafos-master/edge.cpp \
 		../Grafos-master/graph.cpp \
-		../Grafos-master/kruskal.cpp \
 		../Grafos-master/main.cpp \
 		../Grafos-master/mainwindow.cpp \
 		../Grafos-master/vertex.cpp \
@@ -59,7 +58,7 @@ SOURCES       = ../Grafos-master/edge.cpp \
 		../Grafos-master/Prim.cpp \
 		../Grafos-master/OrdenacaoTopologica.cpp \
 		../Grafos-master/Dijkstra.cpp \
-		../Grafos-master/FordFulkerson.cpp qrc_qml.cpp \
+		../Grafos-master/Kruskal.cpp qrc_qml.cpp \
 		moc_graph.cpp \
 		moc_vertex.cpp \
 		moc_mainwindow.cpp \
@@ -72,7 +71,6 @@ SOURCES       = ../Grafos-master/edge.cpp \
 		moc_Kruskal.cpp
 OBJECTS       = edge.o \
 		graph.o \
-		kruskal.o \
 		main.o \
 		mainwindow.o \
 		vertex.o \
@@ -81,7 +79,7 @@ OBJECTS       = edge.o \
 		Prim.o \
 		OrdenacaoTopologica.o \
 		Dijkstra.o \
-		FordFulkerson.o \
+		Kruskal.o \
 		qrc_qml.o \
 		moc_graph.o \
 		moc_vertex.o \
@@ -214,8 +212,7 @@ DIST          = ../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.5/clang_64/mkspecs/features/exceptions.prf \
 		../../../Qt/5.5/clang_64/mkspecs/features/yacc.prf \
 		../../../Qt/5.5/clang_64/mkspecs/features/lex.prf \
-		../Grafos-master/Grafos.pro ../Grafos-master/fila.h \
-		../Grafos-master/graph.h \
+		../Grafos-master/Grafos.pro ../Grafos-master/graph.h \
 		../Grafos-master/vertex.h \
 		../Grafos-master/mainwindow.h \
 		../Grafos-master/edge.h \
@@ -224,11 +221,8 @@ DIST          = ../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf \
 		../Grafos-master/OrdenacaoTopologica.h \
 		../Grafos-master/Dijkstra.h \
 		../Grafos-master/Prim.h \
-		../Grafos-master/Kruskal.h \
-		../Grafos-master/list.h \
-		../Grafos-master/FordFulkerson.h ../Grafos-master/edge.cpp \
+		../Grafos-master/Kruskal.h ../Grafos-master/edge.cpp \
 		../Grafos-master/graph.cpp \
-		../Grafos-master/kruskal.cpp \
 		../Grafos-master/main.cpp \
 		../Grafos-master/mainwindow.cpp \
 		../Grafos-master/vertex.cpp \
@@ -237,7 +231,7 @@ DIST          = ../../../Qt/5.5/clang_64/mkspecs/features/spec_pre.prf \
 		../Grafos-master/Prim.cpp \
 		../Grafos-master/OrdenacaoTopologica.cpp \
 		../Grafos-master/Dijkstra.cpp \
-		../Grafos-master/FordFulkerson.cpp
+		../Grafos-master/Kruskal.cpp
 QMAKE_TARGET  = Grafos
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = Grafos.app/Contents/MacOS/Grafos
@@ -568,8 +562,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Grafos-master/qml.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../Grafos-master/fila.h ../Grafos-master/graph.h ../Grafos-master/vertex.h ../Grafos-master/mainwindow.h ../Grafos-master/edge.h ../Grafos-master/Dfs.h ../Grafos-master/Bfs.h ../Grafos-master/OrdenacaoTopologica.h ../Grafos-master/Dijkstra.h ../Grafos-master/Prim.h ../Grafos-master/Kruskal.h ../Grafos-master/list.h ../Grafos-master/FordFulkerson.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Grafos-master/edge.cpp ../Grafos-master/graph.cpp ../Grafos-master/kruskal.cpp ../Grafos-master/main.cpp ../Grafos-master/mainwindow.cpp ../Grafos-master/vertex.cpp ../Grafos-master/Dfs.cpp ../Grafos-master/Bfs.cpp ../Grafos-master/Prim.cpp ../Grafos-master/OrdenacaoTopologica.cpp ../Grafos-master/Dijkstra.cpp ../Grafos-master/FordFulkerson.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Grafos-master/graph.h ../Grafos-master/vertex.h ../Grafos-master/mainwindow.h ../Grafos-master/edge.h ../Grafos-master/Dfs.h ../Grafos-master/Bfs.h ../Grafos-master/OrdenacaoTopologica.h ../Grafos-master/Dijkstra.h ../Grafos-master/Prim.h ../Grafos-master/Kruskal.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Grafos-master/edge.cpp ../Grafos-master/graph.cpp ../Grafos-master/main.cpp ../Grafos-master/mainwindow.cpp ../Grafos-master/vertex.cpp ../Grafos-master/Dfs.cpp ../Grafos-master/Bfs.cpp ../Grafos-master/Prim.cpp ../Grafos-master/OrdenacaoTopologica.cpp ../Grafos-master/Dijkstra.cpp ../Grafos-master/Kruskal.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Grafos-master/mainwindow.ui $(DISTDIR)/
 
 
@@ -875,36 +869,12 @@ graph.o: ../Grafos-master/graph.cpp ../Grafos-master/graph.h \
 		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qfile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graph.o ../Grafos-master/graph.cpp
 
-kruskal.o: ../Grafos-master/kruskal.cpp ../Grafos-master/kruskal.h \
-		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QThread \
-		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qthread.h \
-		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QDebug \
-		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
-		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QString \
-		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/QColor \
-		../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qcolor.h \
+main.o: ../Grafos-master/main.cpp ../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		../Grafos-master/mainwindow.h \
 		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../Grafos-master/graph.h \
-		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QObject \
-		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
-		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h \
-		../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/QPainter \
-		../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpainter.h \
-		../Grafos-master/vertex.h \
-		../Grafos-master/edge.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o kruskal.o ../Grafos-master/kruskal.cpp
-
-main.o: ../Grafos-master/main.cpp ../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
-		../Grafos-master/interface.h \
-		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
-		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		../Grafos-master/Graph.h \
 		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
@@ -924,7 +894,12 @@ main.o: ../Grafos-master/main.cpp ../../../Qt/5.5/clang_64/lib/QtWidgets.framewo
 		../Grafos-master/Dfs.h \
 		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QThread \
 		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qthread.h \
+		../Grafos-master/Graph.h \
 		../Grafos-master/Bfs.h \
+		../Grafos-master/OrdenacaoTopologica.h \
+		../Grafos-master/Prim.h \
+		../Grafos-master/Dijkstra.h \
+		../Grafos-master/kruskal.h \
 		../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/QPaintEvent \
 		../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qevent.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Grafos-master/main.cpp
@@ -1099,8 +1074,29 @@ Dijkstra.o: ../Grafos-master/Dijkstra.cpp ../Grafos-master/Dijkstra.h \
 		../Grafos-master/edge.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Dijkstra.o ../Grafos-master/Dijkstra.cpp
 
-FordFulkerson.o: ../Grafos-master/FordFulkerson.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o FordFulkerson.o ../Grafos-master/FordFulkerson.cpp
+Kruskal.o: ../Grafos-master/Kruskal.cpp ../Grafos-master/kruskal.h \
+		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QThread \
+		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qthread.h \
+		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qcolor.h \
+		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../Grafos-master/graph.h \
+		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/5.5/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../Qt/5.5/clang_64/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/QPainter \
+		../../../Qt/5.5/clang_64/lib/QtGui.framework/Headers/qpainter.h \
+		../Grafos-master/vertex.h \
+		../Grafos-master/edge.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Kruskal.o ../Grafos-master/Kruskal.cpp
 
 qrc_qml.o: qrc_qml.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_qml.o qrc_qml.cpp

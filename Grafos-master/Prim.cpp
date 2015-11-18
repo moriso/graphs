@@ -23,7 +23,6 @@ void Prim::prim() {
     Vertex **V = grafo->getVertex();
     Vertex *verticeAtual, *vertice;
     Edge *aresta;
-    qDebug()<<"Prim";
     for( int i = 0; i < n; i++ ) {
         V[i]->setD(INF);
         V[i]->setFather(NULL);

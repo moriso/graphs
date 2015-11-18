@@ -17,7 +17,6 @@ void kruskal::run () {
     KRUSKAl();
 }
 
-// Algoritmo para o método de Kruskal
 void kruskal::MAKE_SET () {
    f->resize( g->getVertexCount() );
    for (int i=0; i<g->getVertexCount(); i++) {

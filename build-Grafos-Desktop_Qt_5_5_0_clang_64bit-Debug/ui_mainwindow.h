@@ -135,13 +135,12 @@ public:
         start->setText(QApplication::translate("MainWindow", "Iniciar", 0));
         metodos->clear();
         metodos->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "DFS", 0)
          << QApplication::translate("MainWindow", "BFS", 0)
-         << QApplication::translate("MainWindow", "ORDENA\303\207\303\203O TOPOL\303\223GICA", 0)
-         << QApplication::translate("MainWindow", "PRIM", 0)
-         << QApplication::translate("MainWindow", "KRUSKAL", 0)
-         << QApplication::translate("MainWindow", "DIJKSTRA", 0)
-         << QApplication::translate("MainWindow", "FORD FUCKERSON", 0)
+         << QApplication::translate("MainWindow", "DFS", 0)
+         << QApplication::translate("MainWindow", "Dijkstra", 0)
+         << QApplication::translate("MainWindow", "Kruskal", 0)
+         << QApplication::translate("MainWindow", "Ordena\303\247\303\243o Topol\303\263gica", 0)
+         << QApplication::translate("MainWindow", "Prim", 0)
         );
         labelFinal->setText(QApplication::translate("MainWindow", "N\303\263 final", 0));
         labelInicial->setText(QApplication::translate("MainWindow", "N\303\263 inicial", 0));

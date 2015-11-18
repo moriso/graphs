@@ -1,7 +1,6 @@
 #ifndef ORDENACAOTOPOLOGICA_H
 #define ORDENACAOTOPOLOGICA_H
 
-#define INFINITO 1000000
 #include <QThread>
 #include <QDebug>
 #include <QString>

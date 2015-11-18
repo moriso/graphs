@@ -18,8 +18,8 @@ void OrdenacaoTopologica:: ordenacaoTopologica() {
     int n = g->getVertexCount();
     for(int i = this->index; i < n; i++) {
         V[i]->setFather(NULL);
-        V[i]->setTi(INFINITO);
-        V[i]->setTo(INFINITO);
+        V[i]->setTi(INF);
+        V[i]->setTo(INF);
         V[i]->setColor(Qt::white);
     }
     tempo = 0;

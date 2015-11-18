@@ -4,7 +4,6 @@ QT += qml quick widgets
 
 SOURCES += edge.cpp \
     graph.cpp \
-    kruskal.cpp \
     main.cpp \
     mainwindow.cpp \
     vertex.cpp \
@@ -13,7 +12,7 @@ SOURCES += edge.cpp \
     Prim.cpp \
     OrdenacaoTopologica.cpp \
     Dijkstra.cpp \
-    FordFulkerson.cpp
+    Kruskal.cpp
 
 RESOURCES += qml.qrc
 
@@ -24,7 +23,6 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    fila.h \
     graph.h \
     vertex.h \
     mainwindow.h \
@@ -34,9 +32,7 @@ HEADERS += \
     OrdenacaoTopologica.h \
     Dijkstra.h \
     Prim.h \
-    Kruskal.h \
-    list.h \
-    FordFulkerson.h
+    Kruskal.h
 
 FORMS += \
     mainwindow.ui
