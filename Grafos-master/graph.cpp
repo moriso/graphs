@@ -51,18 +51,19 @@ Vertex* Graph::getVertexAt ( int index ) {
 
 void Graph::addVertex ( QString name, QPoint p ) {
     if (count<max) {
-        qDebug() << "Adicionando vértice " << name;
+        qDebug() << "Adicionando vertice " << name;
         vertex[count] = new Vertex(count, name.toUpper(), p );
         count++;
     } else
-        qDebug() << "Número de vértices maior que o informado!";
+        qDebug() << "Numero de vertices maior que o informado!";
 }
 
 bool Graph::addEdge ( QString source, QString target, int w, QColor color ) {
+    
     int s = getVertexIndex(source.toUpper());
     int t = getVertexIndex(target.toUpper());
     if ((s==-1) || (t==-1)) {
-        qDebug() << "Vértice de [origem|destino] não encontrado: " << source << ", " << target;
+        qDebug() << "Vertice de [origem|destino] nao encontrado: " << source << ", " << target;
         return false;
     }
     Edge::append( &edges, s, t, w, color );
@@ -116,7 +117,7 @@ QString Graph::loadFromFile ( QString fileName ) {
             addVertex ( sl[0], QPoint(sl[1].toInt(), sl[2].toInt()));
             v  += c + sl[0];  c   = ";";
         } else {
-            QMessageBox::critical(this,"Carregar vértices", "Erro na estrutura do arquivo - nós [node, coord. x, coord. y]!");
+            QMessageBox::critical(this,"Carregar vertices", "Erro na estrutura do arquivo - nos [node, coord. x, coord. y]!");
             return "";
         }
         n--;
@@ -128,7 +129,7 @@ QString Graph::loadFromFile ( QString fileName ) {
         if (sl.count()==3)
             addEdge(sl[0], sl[1], sl[2].toInt() );
         else {
-            QMessageBox::critical(this,"Carregar arestas", "Erro na estrutura do arquivo - nós [node, coord. x, coord. y]!");
+            QMessageBox::critical(this,"Carregar arestas", "Erro na estrutura do arquivo - nos [node, coord. x, coord. y]!");
             return "";
         }
     }

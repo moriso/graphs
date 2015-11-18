@@ -86,17 +86,36 @@ Vertex *Vertex::clone () {
     return new Vertex (id, name, p, this->parent() );
 }
 
+QString Vertex::toString( int v ) {
+    if (v!=INFINITY)
+        return QString::number(v);
+    else
+        return "-";
+}
+
 void Vertex::paint ( QPainter &painter ) {
+//    painter.setBrush ( color );
+//    painter.setPen( (color==Qt::white)? Qt::black : Qt::white );
+//    painter.drawEllipse( p.x()-20,  p.y()-20, 40, 40 );
+
+//    QRect rect ( p.x()-4,  p.y()-8, p.x()+4,  p.y()+8 );
+//    painter.drawText( rect, name );
+
     painter.setBrush ( color );
     painter.setPen( (color==Qt::white)? Qt::black : Qt::white );
     painter.drawEllipse( p.x()-20,  p.y()-20, 40, 40 );
 
-    QRect rect ( p.x()-4,  p.y()-8, p.x()+4,  p.y()+8 );
-    painter.drawText( rect, name );
+    QRect rect1 ( p.x()-6,  p.y()-8, p.x(),  p.y()+8 );
+    if (father)
+        painter.drawText( rect1, name + "["+father->getName()+"]");
+    else
+        painter.drawText( rect1, name + "[]");
 
+    painter.setPen( Qt::darkGreen );
+    QRect rect2 ( p.x()+25,  p.y()-25, p.x()+25,  p.y()+25 );
 
-    // colocar peso?
-    // setar o pai?
+    painter.drawText( rect2, toString(d) + "/" +  toString(t) );
+
 }
 
 Vertex::~Vertex() {

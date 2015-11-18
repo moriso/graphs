@@ -8,6 +8,8 @@
 
 #include "edge.h"
 
+#define INFINITY INT_MAX
+
 class Vertex : public QObject {
     Q_OBJECT
 
@@ -37,6 +39,7 @@ public:
 
     Vertex *clone ();
     void paint ( QPainter & );
+    QString toString( int );
 
 protected:
     QString name;

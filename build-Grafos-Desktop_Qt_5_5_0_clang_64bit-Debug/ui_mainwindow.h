@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -32,14 +33,15 @@ class Ui_MainWindow
 public:
     QAction *actionLoad;
     QWidget *centralWidget;
-    QComboBox *cbOrigem;
-    QLabel *labelInicial;
-    QLabel *labelFinal;
-    QComboBox *cbFinal;
-    QTextEdit *textEdit;
+    QHBoxLayout *horizontalLayout;
     QPushButton *pushButton;
-    QComboBox *metodos;
     QPushButton *start;
+    QComboBox *cbFinal;
+    QComboBox *metodos;
+    QComboBox *cbOrigem;
+    QTextEdit *textEdit;
+    QLabel *labelFinal;
+    QLabel *labelInicial;
     QMenuBar *menuBar;
     QMenu *menuGraphs;
     QToolBar *mainToolBar;
@@ -50,39 +52,59 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(613, 421);
+        MainWindow->resize(578, 422);
         actionLoad = new QAction(MainWindow);
         actionLoad->setObjectName(QStringLiteral("actionLoad"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        cbOrigem = new QComboBox(centralWidget);
-        cbOrigem->setObjectName(QStringLiteral("cbOrigem"));
-        cbOrigem->setGeometry(QRect(160, 20, 191, 22));
-        labelInicial = new QLabel(centralWidget);
-        labelInicial->setObjectName(QStringLiteral("labelInicial"));
-        labelInicial->setGeometry(QRect(50, 20, 101, 16));
-        labelFinal = new QLabel(centralWidget);
-        labelFinal->setObjectName(QStringLiteral("labelFinal"));
-        labelFinal->setGeometry(QRect(50, 80, 121, 16));
-        cbFinal = new QComboBox(centralWidget);
-        cbFinal->setObjectName(QStringLiteral("cbFinal"));
-        cbFinal->setGeometry(QRect(160, 80, 191, 22));
-        textEdit = new QTextEdit(centralWidget);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(160, 160, 191, 81));
+        horizontalLayout = new QHBoxLayout(centralWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(160, 260, 131, 23));
-        metodos = new QComboBox(centralWidget);
-        metodos->setObjectName(QStringLiteral("metodos"));
-        metodos->setGeometry(QRect(390, 60, 191, 22));
+
+        horizontalLayout->addWidget(pushButton);
+
         start = new QPushButton(centralWidget);
         start->setObjectName(QStringLiteral("start"));
-        start->setGeometry(QRect(380, 130, 75, 23));
+
+        horizontalLayout->addWidget(start);
+
+        cbFinal = new QComboBox(centralWidget);
+        cbFinal->setObjectName(QStringLiteral("cbFinal"));
+
+        horizontalLayout->addWidget(cbFinal);
+
+        metodos = new QComboBox(centralWidget);
+        metodos->setObjectName(QStringLiteral("metodos"));
+
+        horizontalLayout->addWidget(metodos);
+
+        cbOrigem = new QComboBox(centralWidget);
+        cbOrigem->setObjectName(QStringLiteral("cbOrigem"));
+
+        horizontalLayout->addWidget(cbOrigem);
+
+        textEdit = new QTextEdit(centralWidget);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+
+        horizontalLayout->addWidget(textEdit);
+
+        labelFinal = new QLabel(centralWidget);
+        labelFinal->setObjectName(QStringLiteral("labelFinal"));
+
+        horizontalLayout->addWidget(labelFinal);
+
+        labelInicial = new QLabel(centralWidget);
+        labelInicial->setObjectName(QStringLiteral("labelInicial"));
+
+        horizontalLayout->addWidget(labelInicial);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 613, 21));
+        menuBar->setGeometry(QRect(0, 0, 578, 22));
         menuGraphs = new QMenu(menuBar);
         menuGraphs->setObjectName(QStringLiteral("menuGraphs"));
         MainWindow->setMenuBar(menuBar);
@@ -109,9 +131,8 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Projeto e Analise de Algoritmos (Ci\303\252ncia da Computa\303\247\303\243o)", 0));
         actionLoad->setText(QApplication::translate("MainWindow", "Carregar", 0));
-        labelInicial->setText(QApplication::translate("MainWindow", "Select initial node:", 0));
-        labelFinal->setText(QApplication::translate("MainWindow", "Select final node:", 0));
         pushButton->setText(QApplication::translate("MainWindow", "Mostrar Caminho", 0));
+        start->setText(QApplication::translate("MainWindow", "Iniciar", 0));
         metodos->clear();
         metodos->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "DFS", 0)
@@ -122,7 +143,8 @@ public:
          << QApplication::translate("MainWindow", "DIJKSTRA", 0)
          << QApplication::translate("MainWindow", "FORD FUCKERSON", 0)
         );
-        start->setText(QApplication::translate("MainWindow", "START", 0));
+        labelFinal->setText(QApplication::translate("MainWindow", "N\303\263 final", 0));
+        labelInicial->setText(QApplication::translate("MainWindow", "N\303\263 inicial", 0));
         menuGraphs->setTitle(QApplication::translate("MainWindow", "Graphs", 0));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0));
     } // retranslateUi

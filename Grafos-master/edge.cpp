@@ -1,5 +1,8 @@
 #include "edge.h"
 
+#define PERCENT1 0.9
+#define PERCENT2 1.1
+
 Edge::Edge ( int id, int idAdj, int w, QColor color, QObject *parent ) : QObject(parent) {
     this->id    = id;    // source of edges
     this->idAdj = idAdj; // adjacent of edges
@@ -14,13 +17,30 @@ void Edge::setColor ( QColor value ) {
 }
 
 void Edge::paint(QPoint p1, QPoint p2, QPainter &painter ) {
-    painter.setPen( color );
-    painter.drawLine ( p1, p2 );
+    int dx = p2.x()-p1.x();
+    int dy = p2.y()-p1.y();
+    int x = p1.x() + dx/2;
+    int y = p1.y() + dy/2;
+    int xl = p1.x() + dx/3;
+    int yl = p1.y() + dy/3;
 
-    int x = (p1.x()+p2.x())/2;
-    int y = (p1.y()+p2.y())/2;
-    QRect rect ( x-4,  y, x,  y );
-    painter.drawText ( rect, QString::number(w) );
+    painter.setPen( color );
+
+    QPainterPath myPath;
+    myPath.moveTo(p1);
+    if (p1.x()<p2.x()) {
+        if (p1.y()<p2.y())
+            myPath.cubicTo ( p1, QPoint(x*PERCENT1,y), p2);
+        else
+            myPath.cubicTo ( p1, QPoint(x,y*PERCENT2), p2);
+    } else
+        if (p1.y()>p2.y())
+            myPath.cubicTo ( p1, QPoint(x,y*PERCENT2), p2);
+        else
+            myPath.cubicTo ( p1, QPoint(x*PERCENT1,y), p2);
+
+    painter.drawPath( myPath );
+    painter.drawText (QRect(xl,yl,xl,yl), QString::number(w) );
 }
 
 int Edge::getW ()  {

@@ -6,149 +6,100 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>613</width>
-    <height>421</height>
+    <width>578</width>
+    <height>422</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Projeto e Analise de Algoritmos (Ciência da Computação)</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QComboBox" name="cbOrigem">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>20</y>
-      <width>191</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelInicial">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>20</y>
-      <width>101</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Select initial node:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelFinal">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>80</y>
-      <width>121</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Select final node:</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="cbFinal">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>80</y>
-      <width>191</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>160</y>
-      <width>191</width>
-      <height>81</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>260</y>
-      <width>131</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Mostrar Caminho</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="metodos">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>60</y>
-      <width>191</width>
-      <height>22</height>
-     </rect>
-    </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <property name="text">
-      <string>DFS</string>
-     </property>
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>Mostrar Caminho</string>
+      </property>
+     </widget>
     </item>
     <item>
-     <property name="text">
-      <string>BFS</string>
-     </property>
+     <widget class="QPushButton" name="start">
+      <property name="text">
+       <string>Iniciar</string>
+      </property>
+     </widget>
     </item>
     <item>
-     <property name="text">
-      <string>ORDENAÇÃO TOPOLÓGICA</string>
-     </property>
+     <widget class="QComboBox" name="cbFinal"/>
     </item>
     <item>
-     <property name="text">
-      <string>PRIM</string>
-     </property>
+     <widget class="QComboBox" name="metodos">
+      <item>
+       <property name="text">
+        <string>DFS</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>BFS</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ORDENAÇÃO TOPOLÓGICA</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>PRIM</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>KRUSKAL</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>DIJKSTRA</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>FORD FUCKERSON</string>
+       </property>
+      </item>
+     </widget>
     </item>
     <item>
-     <property name="text">
-      <string>KRUSKAL</string>
-     </property>
+     <widget class="QComboBox" name="cbOrigem"/>
     </item>
     <item>
-     <property name="text">
-      <string>DIJKSTRA</string>
-     </property>
+     <widget class="QTextEdit" name="textEdit"/>
     </item>
     <item>
-     <property name="text">
-      <string>FORD FUCKERSON</string>
-     </property>
+     <widget class="QLabel" name="labelFinal">
+      <property name="text">
+       <string>Nó final</string>
+      </property>
+     </widget>
     </item>
-   </widget>
-   <widget class="QPushButton" name="start">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>130</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>START</string>
-    </property>
-   </widget>
+    <item>
+     <widget class="QLabel" name="labelInicial">
+      <property name="text">
+       <string>Nó inicial</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>613</width>
-     <height>21</height>
+     <width>578</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuGraphs">
